@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Media;
 
 namespace SimonSays
 {
@@ -19,11 +20,17 @@ namespace SimonSays
         private void GameOverScreen_Load(object sender, EventArgs e)
         {
             //TODO: show the length of the pattern
+            SoundPlayer loseSound = new SoundPlayer(Properties.Resources.sadtrombone);
+            loseSound.Play();
+
+            patternLabel.Text = $"The pattern length was ";
+            lengthLabel.Text = $" { Form1.patternList.Count}";
         }
 
         private void closeButton_Click(object sender, EventArgs e)
         {
             //TODO: close this screen and open the MenuScreen
+            Form1.ChangeScreen(this, new MenuScreen());
         }
     }
 }
